@@ -340,7 +340,6 @@
          phone object irrespective of this config -->
     <bool name="config_switch_phone_on_voice_reg_state_change">false</bool>
 
-
     <!-- Use ERI text for network name on CDMA LTE -->
         <bool name="config_LTE_eri_for_network_name">false</bool>
 
@@ -382,6 +381,7 @@
 
     <!-- MMS user agent string -->
     <string name="config_mms_user_agent" translatable="false">Android-Mms/2.0</string>
+
     <!-- MMS user agent prolfile url -->
     <string name="config_mms_user_agent_profile_url" translatable="false">http://wap1.huawei.com/uaprof/HUAWEI_angler-Uaprofile.xml</string>
 
@@ -398,5 +398,8 @@
 
     <!-- Enable system navigation keys. -->
     <bool name="config_supportSystemNavigationKeys">true</bool>
+
+    <!-- enable doze powersaving mode -->
+    <bool name="config_enableAutoPowerModes">true</bool>
 
 </resources>
