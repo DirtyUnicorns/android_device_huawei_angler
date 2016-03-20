@@ -19,6 +19,7 @@ import init.angler.diag.rc
 import init.angler.sensorhub.rc
 
 on early-init
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1555200
     mount debugfs debugfs /sys/kernel/debug
     chown system system /sys/kernel/debug/kgsl/proc
 
@@ -70,6 +71,7 @@ on boot
     write /dev/cpuset/foreground/boost/cpus 4-7
     write /dev/cpuset/background/cpus 0
     write /dev/cpuset/system-background/cpus 0-3
+    write /sys/devices/system/cpu/cpu4/cpufreq/scaling_max_freq 1958400
 
     # setup permissions for fb0 related nodes
     chown radio radio /sys/class/graphics/fb0/dynamic_dsitiming
