@@ -404,6 +404,6 @@ $(call inherit-product-if-exists, vendor/qcom/gpu/msm8994/msm8994-gpu-vendor.mk)
 $(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4358/device-bcm.mk)
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.sys.usb.config=adb \
+    persist.sys.usb.config=mtp,adb \
     ro.adb.secure=0 \
     ro.du.updater=angler
