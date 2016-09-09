@@ -85,7 +85,7 @@ BOARD_CHARGER_ENABLE_SUSPEND := true
 ifeq ($(HOST_OS),linux)
   ifneq ($(TARGET_BUILD_VARIANT),eng)
     ifeq ($(WITH_DEXPREOPT),)
-      WITH_DEXPREOPT := true
+      WITH_DEXPREOPT := false
     endif
   endif
 endif
@@ -137,6 +137,9 @@ BOARD_VENDOR_QCOM_LOC_PDK_FEATURE_SET := true
 # Testing related defines
 BOARD_PERFSETUP_SCRIPT := platform_testing/scripts/perf-setup/angler-setup.sh
 
-USE_CLANG_PLATFORM_BUILD := true
+# USE_CLANG_PLATFORM_BUILD := true
+
+# Enable workaround for slow rom flash
+BOARD_SUPPRESS_SECURE_ERASE := true
 
 -include vendor/huawei/angler/BoardConfigVendor.mk
