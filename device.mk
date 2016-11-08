@@ -80,7 +80,8 @@ PRODUCT_PACKAGES += \
 
 # include fingerprintd
 PRODUCT_PACKAGES += \
-    fingerprintd
+    fingerprintd \
+    fingerprint.angler
 
 # Delegation for OEM customization
 PRODUCT_OEM_PROPERTIES := \
