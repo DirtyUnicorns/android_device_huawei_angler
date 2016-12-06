@@ -1,5 +1,5 @@
 #
-# Copyright 2015 The Android Open Source Project
+# Copyright 2013-2017 The Dirty Unicorns Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,27 +17,21 @@
 # Sample: This is where we'd set a backup provider if we had one
 # $(call inherit-product, device/sample/products/backup_overlay.mk)
 
-# Get the long list of APNs
-#PRODUCT_COPY_FILES := device/huawei/angler/apns-full-conf.xml:system/etc/apns-conf.xml
-
 # Inherit from the common Open Source product configuration
-$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
+$(call inherit-product, device/huawei/angler/aosp_angler.mk)
 
-PRODUCT_NAME := aosp_angler
+# Inherit from our custom product configuration
+$(call inherit-product, vendor/du/config/common_full_phone.mk)
+
+PRODUCT_NAME := du_angler
 PRODUCT_DEVICE := angler
-PRODUCT_BRAND := Android
-PRODUCT_MODEL := AOSP on angler
+PRODUCT_BRAND := google
+PRODUCT_MODEL := Nexus 6P
 PRODUCT_MANUFACTURER := Huawei
-#PRODUCT_RESTRICT_VENDOR_FILES := true
 
-PRODUCT_COPY_FILES += device/huawei/angler/fstab.aosp_angler:root/fstab.angler
-
-$(call inherit-product, device/huawei/angler/device.mk)
-$(call inherit-product-if-exists, vendor/huawei/angler/device-vendor.mk)
-
-PRODUCT_PACKAGES += \
-    Launcher3
-
-PRODUCT_PACKAGES += \
-    AOSPLinks
+# Device Fingerprint
+PRODUCT_BUILD_PROP_OVERRIDES += \
+    PRODUCT_NAME=angler \
+    BUILD_FINGERPRINT=google/angler/angler:7.1.2/N2G47H/3783593:user/release-keys \
+    PRIVATE_BUILD_DESC="angler-user 7.1.2 N2G47H 3783593 release-keys"

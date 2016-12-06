@@ -1,0 +1,12 @@
+[
+  {
+    "repository":   "DirtyUnicorns/android_kernel_huawei_angler",
+    "target_path":  "kernel/huawei/angler",
+    "branch":       "n7x"
+  },
+  {
+    "repository":  "DirtyUnicorns/android_vendor_huawei",
+    "target_path": "vendor/huawei",
+    "branch":      "n7x"
+  }
+]
