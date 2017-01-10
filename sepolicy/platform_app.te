@@ -6,3 +6,7 @@ userdebug_or_eng(`
 ')
 
 allow platform_app oem_qmi_server:unix_stream_socket connectto;
+
+# Access for com.huawei.sarcontrolservice
+allow platform_app app_data_file:file execute;
+
