@@ -124,6 +124,45 @@ get-set-forall  /sys/class/devfreq/qcom,cpubw*/governor bw_hwmon
 # Disable sched_boost
 write /proc/sys/kernel/sched_boost 0
 
+# Enable fingerprint boost
+write /sys/kernel/fp_boost/enabled 1
+
+# Set I/O Scheduler tweaks
+write /sys/block/mmcblk0/queue/scheduler maple
+write /sys/block/mmcblk0/queue/read_ahead_kb 512
+write /sys/block/mmcblk0/queue/iosched/writes_starved 4
+write /sys/block/mmcblk0/queue/iosched/fifo_batch 16
+write /sys/block/mmcblk0/queue/iosched/sync_read_expire 350
+write /sys/block/mmcblk0/queue/iosched/sync_write_expire 550
+write /sys/block/mmcblk0/queue/iosched/async_read_expire 250
+write /sys/block/mmcblk0/queue/iosched/async_write_expire 450
+write /sys/block/mmcblk0/queue/iosched/sleep_latency_multiple 10
+
+# Disable some wakelocks
+write /sys/module/wakeup/parameters/enable_wlan_rx_wake_ws 0
+write /sys/module/wakeup/parameters/enable_wlan_ctrl_wake_ws 0
+write /sys/module/wakeup/parameters/enable_wlan_wake_ws 0
+write /sys/module/wakeup/parameters/enable_msm_hsic_ws 0
+write /sys/module/wakeup/parameters/enable_qcom_rx_wakelock_ws 0
+write /sys/module/wakeup/parameters/enable_netlink_ws 0
+write /sys/module/wakeup/parameters/enable_ipa_ws 0
+write /sys/module/wakeup/parameters/enable_timerfd_ws 0
+
+# Configure IntelliThermal
+write /sys/module/msm_thermal/parameters/limit_temp_degC 64
+write /sys/module/msm_thermal/parameters/core_limit_temp_degC 64
+write /sys/module/msm_thermal/parameters/poll_ms 3
+
+# Backlight dimmer
+write /sys/module/mdss_fb/parameters/backlight_dimmer 1
+
+# Wakelock dividers
+write /sys/module/bcmdhd/parameters/wlrx_divide 8
+write /sys/module/bcmdhd/parameters/wlctrl_divide 8
+
+# Don't treat storage as rotational
+write /sys/block/mmcblk0/queue/rotational 0
+
 # re-enable thermal and BCL hotplug
 write /sys/module/msm_thermal/core_control/enabled 1
 get-set-forall /sys/devices/soc.0/qcom,bcl.*/mode disable
