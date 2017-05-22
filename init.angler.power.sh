@@ -61,6 +61,7 @@ write /sys/devices/system/cpu/cpu0/cpufreq/interactive/use_migration_notif 1
 write /sys/devices/system/cpu/cpu0/cpufreq/interactive/use_sched_load 0
 write /sys/devices/system/cpu/cpu0/cpufreq/interactive/max_freq_hysteresis 0
 write /sys/devices/system/cpu/cpu0/cpufreq/interactive/boostpulse_duration 0
+write /sys/devices/system/cpu/cpu0/cpufreq/interactive/screen_off_maxfreq 600000
 
 # online CPU4
 write /sys/devices/system/cpu/cpu4/online 1
@@ -82,6 +83,7 @@ write /sys/devices/system/cpu/cpu4/cpufreq/interactive/use_migration_notif 1
 write /sys/devices/system/cpu/cpu4/cpufreq/interactive/use_sched_load 0
 write /sys/devices/system/cpu/cpu4/cpufreq/interactive/max_freq_hysteresis 0
 write /sys/devices/system/cpu/cpu4/cpufreq/interactive/boostpulse_duration 0
+write /sys/devices/system/cpu/cpu4/cpufreq/interactive/screen_off_maxfreq 633600
 
 # restore A57's max
 copy /sys/devices/system/cpu/cpu4/cpufreq/cpuinfo_max_freq /sys/devices/system/cpu/cpu4/cpufreq/scaling_max_freq
@@ -142,11 +144,6 @@ write /sys/module/wakeup/parameters/enable_qcom_rx_wakelock_ws 0
 write /sys/module/wakeup/parameters/enable_netlink_ws 0
 write /sys/module/wakeup/parameters/enable_ipa_ws 0
 write /sys/module/wakeup/parameters/enable_timerfd_ws 0
-
-# Configure IntelliThermal
-write /sys/module/msm_thermal/parameters/limit_temp_degC 64
-write /sys/module/msm_thermal/parameters/core_limit_temp_degC 64
-write /sys/module/msm_thermal/parameters/poll_ms 3
 
 # Backlight dimmer
 write /sys/module/mdss_fb/parameters/backlight_dimmer 1
