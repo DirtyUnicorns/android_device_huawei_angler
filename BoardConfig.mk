@@ -147,4 +147,7 @@ USE_CLANG_PLATFORM_BUILD := true
 
 TARGET_FS_CONFIG_GEN += device/huawei/angler/config.fs
 
+# Enable workaround for slow rom flash
+BOARD_SUPPRESS_SECURE_ERASE := true
+
 -include vendor/huawei/angler/BoardConfigVendor.mk
