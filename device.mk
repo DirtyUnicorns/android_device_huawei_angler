@@ -155,7 +155,6 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.vulkan.level-0.xml:system/etc/permissions/android.hardware.vulkan.level.xml \
     frameworks/native/data/etc/android.hardware.vulkan.version-1_0_3.xml:system/etc/permissions/android.hardware.vulkan.version.xml
 
-
 # MSM IRQ Balancer configuration file
 PRODUCT_COPY_FILES += \
     device/huawei/angler/msm_irqbalance.conf:$(TARGET_COPY_OUT_VENDOR)/etc/msm_irqbalance.conf
@@ -264,7 +263,7 @@ PRODUCT_PACKAGES += \
     activity_recognition.angler \
     context_hub.default \
     android.hardware.sensors@1.0-impl \
-    android.hardware.contexthub@1.0-impl \
+    android.hardware.contexthub@1.0-impl
 
 # new gatekeeper HAL
 PRODUCT_PACKAGES += \
@@ -569,7 +568,8 @@ ifneq (,$(filter userdebug, $(TARGET_BUILD_VARIANT)))
 endif
 
 # setup dalvik vm configs.
-$(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
+$(call inherit-product, vendor/extras/configs/phone-xxhdpi-3072-dalvik-heap.mk)
+$(call inherit-product, vendor/extras/configs/phone-xxhdpi-3072-hwui-memory.mk)
 
 # drmservice prop
 PRODUCT_PROPERTY_OVERRIDES += \
