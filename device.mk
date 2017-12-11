@@ -129,6 +129,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
     frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
     frameworks/native/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml \
+    frameworks/native/data/etc/android.hardware.wifi.passpoint.xml:system/etc/permissions/android.hardware.wifi.passpoint.xml \
     frameworks/native/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml \
     frameworks/native/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
     frameworks/native/data/etc/android.hardware.sensor.gyroscope.xml:system/etc/permissions/android.hardware.sensor.gyroscope.xml \
@@ -229,7 +230,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.audio@2.0-impl \
     android.hardware.audio.effect@2.0-impl \
-    android.hardware.broadcastradio@1.0-impl \
     android.hardware.soundtrigger@2.0-impl
 
 #CAMERA
@@ -257,6 +257,7 @@ TARGET_USES_NANOHUB_SENSORHAL := true
 NANOHUB_SENSORHAL_LID_STATE_ENABLED := true
 NANOHUB_SENSORHAL_USB_MAG_BIAS_ENABLED := true
 NANOHUB_SENSORHAL_SENSORLIST := $(LOCAL_PATH)/sensorhal/sensorlist.cpp
+NANOHUB_SENSORHAL_DIRECT_REPORT_ENABLED := true
 
 PRODUCT_PACKAGES += \
     sensors.angler \
@@ -343,14 +344,6 @@ PRODUCT_PACKAGES += \
     android.hardware.usb@1.0-service
 # Library used for VTS tests  (only for userdebug and eng builds)
 ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
-# Test HAL for hwbinder performance benchmark.
-PRODUCT_PACKAGES += \
-     android.hardware.tests.libhwbinder@1.0-impl
-
-# Test HAL for FMQ performance benchmark.
-PRODUCT_PACKAGES += \
-     android.hardware.tests.msgq@1.0-impl
-
 # For VTS profiling.
 PRODUCT_PACKAGES += \
      libvts_profiling \
@@ -555,17 +548,6 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 # ro.product.first_api_level indicates the first api level the device has commercially launched on.
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.product.first_api_level=23
-
-# In userdebug, add minidebug info the the boot image and the system server to support
-# diagnosing native crashes.
-ifneq (,$(filter userdebug, $(TARGET_BUILD_VARIANT)))
-    # Boot image.
-    PRODUCT_DEX_PREOPT_BOOT_FLAGS += --generate-mini-debug-info
-    # System server and some of its services.
-    # Note: we cannot use PRODUCT_SYSTEM_SERVER_JARS, as it has not been expanded at this point.
-    $(call add-product-dex-preopt-module-config,services,--generate-mini-debug-info)
-    $(call add-product-dex-preopt-module-config,wifi-service,--generate-mini-debug-info)
-endif
 
 # setup dalvik vm configs.
 $(call inherit-product, vendor/extras/configs/phone-xxhdpi-3072-dalvik-heap.mk)
