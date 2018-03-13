@@ -1,5 +1,5 @@
 #
-# Copyright 2013-2017 The Dirty Unicorns Project
+# Copyright 2013-2018 The Dirty Unicorns Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -37,5 +37,5 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Device Fingerprint
 PRODUCT_BUILD_PROP_OVERRIDES += \
     PRODUCT_NAME=angler \
-    BUILD_FINGERPRINT=google/angler/angler:8.1.0/OPM3.171019.014/4503998:user/release-keys \
-    PRIVATE_BUILD_DESC="angler-user 8.1.0 OPM3.171019.014 4503998 release-keys"
+    BUILD_FINGERPRINT=google/angler/angler:8.1.0/OPM3.171019.016/4565142:user/release-keys \
+    PRIVATE_BUILD_DESC="angler-user 8.1.0 OPM3.171019.016 4565142 release-keys"
