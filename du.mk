@@ -37,5 +37,5 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Device Fingerprint
 PRODUCT_BUILD_PROP_OVERRIDES += \
     PRODUCT_NAME=angler \
-    BUILD_FINGERPRINT=google/angler/angler:8.1.0/OPM6.171019.030.H1/4903069:user/release-keys \
-    PRIVATE_BUILD_DESC="angler-user OPM6.171019.030.H1 4903069 release-keys"
+    BUILD_FINGERPRINT=google/angler/angler:8.1.0/OPM7.181005.003/4984324:user/release-keys \
+    PRIVATE_BUILD_DESC="angler-user OPM7.181005.003 4984324 release-keys"
