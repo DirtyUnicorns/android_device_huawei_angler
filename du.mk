@@ -23,6 +23,8 @@ $(call inherit-product, device/huawei/angler/aosp_angler.mk)
 
 # Inherit from our custom product configuration
 $(call inherit-product, vendor/du/config/common_full_phone.mk)
+# Temporary bootanimation set
+$(eval scr_resolution = 1440x2560)
 
 PRODUCT_NAME := du_angler
 PRODUCT_DEVICE := angler
